@@ -130,6 +130,11 @@ impl Widget for &MemWidget<'_> {
 			.datasets(&datasets)
 			.render(area, buf);
 
+		log::debug!(
+			"Main Memory Used: {} Total: {}",
+			self.main.used,
+			self.main.total
+		);
 		buf.set_string(
 			area.x + 3,
 			area.y + 2,
@@ -143,6 +148,7 @@ impl Widget for &MemWidget<'_> {
 		);
 
 		if let Some(swap) = &self.swap {
+			log::debug!("Swap Memory Used: {} Total: {}", swap.used, swap.total);
 			buf.set_string(
 				area.x + 3,
 				area.y + 3,

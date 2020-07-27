@@ -173,6 +173,12 @@ impl Widget for &DiskWidget<'_> {
 		Table::new(
 			["Partition", "Mount", "Used", "Free", "R/s", "W/s"].iter(),
 			partitions.into_iter().map(|partition| {
+				log::debug!(
+					"Disk Bytes Free: {} Read: {} Written: {}",
+					partition.bytes_free,
+					partition.bytes_read_recently,
+					partition.bytes_written_recently
+				);
 				Row::StyledData(
 					vec![
 						partition.name,

@@ -131,6 +131,7 @@ fn main() {
 	let colorscheme = read_colorscheme(&app_dirs.config_dir, &args.colorscheme);
 	let mut app = setup_app(&args, &colorscheme, PROGRAM_NAME);
 	setup_logfile(&logfile_path);
+	log::info!("Started logging");
 
 	let backend = CrosstermBackend::new(io::stdout());
 	let mut terminal = Terminal::new(backend).unwrap();

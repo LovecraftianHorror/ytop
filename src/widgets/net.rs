@@ -131,6 +131,7 @@ impl Widget for &NetWidget<'_, '_> {
 			return;
 		}
 
+		log::debug!("Net Total Rx: {}", self.total_bytes_recv);
 		buf.set_string(
 			top_half.x + 1,
 			top_half.y + 1,
@@ -138,6 +139,7 @@ impl Widget for &NetWidget<'_, '_> {
 			self.colorscheme.text.modifier(Modifier::BOLD),
 		);
 
+		log::debug!("Net Current Rx: {}", self.bytes_recv.last().unwrap());
 		buf.set_string(
 			top_half.x + 1,
 			top_half.y + 2,
@@ -168,6 +170,7 @@ impl Widget for &NetWidget<'_, '_> {
 			return;
 		}
 
+		log::debug!("Net Total Tx: {}", self.total_bytes_sent);
 		buf.set_string(
 			bottom_half.x + 1,
 			bottom_half.y + 1,
@@ -175,6 +178,7 @@ impl Widget for &NetWidget<'_, '_> {
 			self.colorscheme.text.modifier(Modifier::BOLD),
 		);
 
+		log::debug!("Net Current Tx: {}", self.bytes_sent.last().unwrap());
 		buf.set_string(
 			bottom_half.x + 1,
 			bottom_half.y + 2,
